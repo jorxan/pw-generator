@@ -1,34 +1,185 @@
-function generatepw(){
-    //possible characters//
-    let lowercase = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
-    let capital = ['Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'];
-    let num = ['1','2','3','4','5','6','7','8','9','0',];
-    let special = ['!','@','#','$','%','^','&','*','_','+','?',',','.','-','=','(',')','[',']','{','}'];
+const passwordEl = document.getElementById('password')
+const generateEl = document.getElementById('generate')
+const copyEl = document.getElementById('copy')
 
-    //user input for password length and characters//
-    
-    
-    var passlength = prompt('How long would you like the password to be? (must be between 8 and 128)');
-    if ((passlength>=8) && (passlength <=128)) {
+
+const randomfunc = {
+    lower: getrandomlow,
+    upper: getrandomcap,
+    number: getrandomnum,
+    symbol: getrandomsym
+};
+
+
+//possible characters//
+function getrandomlow() {
+    let low = 'qwertyuiopasdfghjklzxcvbnm';
+    return low[Math.floor(Math.random() * low.length)]
+}
+
+function getrandomcap() {
+    let cap = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+    return cap[Math.floor(Math.random() * cap.length)]
+}
+
+function getrandomnum() {
+    let num = '1234567890';
+    return num[Math.floor(Math.random() * num.length)]
+}
+
+function getrandomsym() {
+    let sym = '!@#$%^&*()_+-=[]{},./?';
+    return sym[Math.floor(Math.random() * sym.length)]
+}
+//user input for password length and characters//
+console.log(getrandomcap());
+
+
+
+function questions() {
+    let pw = ''
+    const passlength = prompt('How long would you like the password to be? (must be between 8 and 128)');
+    if (parseInt(passlength) >= 8 && parseInt(passlength) <= 128) {
         alert("you chose " + passlength)
-        var confirmcap = confirm('would you like your password to include capital letters?');
-         var confirmlow = confirm('would you like your password to include lowercase letters?');
-        var confirmnum = confirm('would you like your password to include numbers?');
-        var confirmsym = confirm('would you like your password to include symbols?');
+        const confirmcap = confirm('would you like your password to include capital letters?');
+        const confirmlow = confirm('would you like your password to include lowercase letters?');
+        const confirmnum = confirm('would you like your password to include numbers?');
+        const confirmsym = confirm('would you like your password to include symbols?');
+        const numberlength = parseInt(passlength)
 
-       
+        generateEl.addEventListener('click', () => {
+            const length = numberlength;
+            const hasLower = (confirmlow);
+            const hasUpper = (confirmcap);
+            const hasNumber = (confirmnum);
+            const hasSymbol = (confirmsym);
+            let low = 'qwertyuiopasdfghjklzxcvbnm';
+            let cap = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+            let num = '1234567890';
+            let sym = '!@#$%^&*()_+-=[]{},./?';
+            let char = '';
+           var characters = char;
+           if (confirmcap === true) {
+               var results = (characters += cap)
+           }
+
+           if (confirmlow === true) {
+               var results = (characters += low)
+           }
+
+           if (confirmnum === true) {
+               var results = (characters += num)
+           }
+           
+           if (confirmsym === true) {
+               var results = (characters += sym)
+           }
+    console.log(results)
+    
+           console.log(characters);
+    
+                
+               
+    
+    
+    
+          console.log(length, hasLower, hasUpper, hasSymbol, hasNumber)
+    
+         for (let i = 0; i <length; i++) {
+                console.log(characters)
+                // pwd = ''
+                pw += characters.charAt(Math.floor(Math.random()*characters.length))
+               
+                
+                
+            }
+            document.getElementById('password').innerHTML = pw
+            console.log(pw)
+            return pw
+            
+    
+            
+    
+            
+            
+        })
+
+
+
     }
     else {
-    alert("please choose a length between 8 and 128")
-    generatepw()
+        alert("please choose a length between 8 and 128")
+        questions();
+
+        copyEl.addEventListener('click', () => {
+        function myFunction() {
+            /* Get the text field */
+                let copyText = document.getElementById("copy");
+            /* Select the text field */
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+            /* Copy the text inside the text field */
+                document.execCommand("copy");
+            /* Alert the copied text */
+                alert("Copied the text: " + copyText.value);
+            }
+        })
     }
-    
-}
 
-function populateform(enterLength) {
-    document.pgenerate.oputput.value = generatepass(enterLength)
-}
 
-generatepw();
+    // generateEl.addEventListener('click', () => {
+    //     const length = numberlength;
+    //     const hasLower = (confirmlow);
+    //     const hasUpper = (confirmcap);
+    //     const hasNumber = (confirmnum);
+    //     const hasSymbol = (confirmsym);
+    //     let low = 'qwertyuiopasdfghjklzxcvbnm';
+    //     let cap = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+    //     let num = '1234567890';
+    //     let sym = '!@#$%^&*()_+-=[]{},./?';
+    //     let char = '';
+    //    var characters = char;
+    //    if (confirmcap=true) {
+    //        var results = characters.concat(cap)
+    //    }
+       
+
+
+    //    console.log(characters);
+
+            
+           
+
+
+
+    //   console.log(length, hasLower, hasUpper, hasSymbol, hasNumber)
+
+    //  for (let i = 0; i <length; i++) {
+    //         console.log(characters)
+    //         pwd = ''
+    //         pwd += low.charAt(Math.floor(Math.random()*low.length))
+           
+            
+            
+    //     }
+    //     document.getElementById('password').innerHTML = pwd
+    //     console.log(pwd)
+    //     return pw
+        
+
+        
+
+        
+        
+    // })
+
+}
+//end of questions function//
+questions()
+
+
+
+
+
 
 
