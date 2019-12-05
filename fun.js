@@ -26,21 +26,21 @@ generateEl.addEventListener('click', () => {
             let num = '1234567890';
             let sym = '!@#$%^&*()_+-=[]{},./?';
             let char = '';
-            var characters = char;
+            let characters = char;
             if (confirmcap === true) {
-                var results = (characters += cap)
+                let results = (characters += cap)
             }
 
             if (confirmlow === true) {
-                var results = (characters += low)
+                let results = (characters += low)
             }
 
             if (confirmnum === true) {
-                var results = (characters += num)
+                let results = (characters += num)
             }
 
             if (confirmsym === true) {
-                var results = (characters += sym)
+                let results = (characters += sym)
             }
             
             else {
@@ -66,7 +66,7 @@ generateEl.addEventListener('click', () => {
 copyEl.addEventListener('click', () => {
     function myFunction() {
         /* Get the text field */
-        var copyText = document.getElementById("password");
+        let copyText = document.getElementById("password");
       
         /* Select the text field */
         copyText.select();
