@@ -27,6 +27,10 @@ generateEl.addEventListener('click', () => {
             let sym = '!@#$%^&*()_+-=[]{},./?';
             let char = '';
             let characters = char;
+            if (confirmsym === false && confirmnum === false && confirmlow === false && confirmcap === false) {
+                alert('please try again and choose at least one variable')
+                return 
+            }
             if (confirmcap === true) {
                 let results = (characters += cap)
             }
@@ -42,11 +46,6 @@ generateEl.addEventListener('click', () => {
             if (confirmsym === true) {
                 let results = (characters += sym)
             }
-            
-            else {
-                alert('retry and use at least 1 character type')
-            }
-            
 
             for (let i = 0; i < length; i++) {
                 pw += characters.charAt(Math.floor(Math.random() * characters.length))   
